@@ -4,8 +4,12 @@ require "json"
 require_relative "../lib/kotolang.rb"
 
 pipes = {
+  'bypass' => BypassPipe,
+  'copy' => CopyPipe,
+  'get' => GetPipe,
   'mock' => MockPipe,
-  'bypass' => BypassPipe
+  'move' => MovePipe,
+  # 'set' => SetPipe
 }
 
 Dir.glob(
@@ -15,6 +19,7 @@ Dir.glob(
   )
 ).each do |spec_file_name|
   f = File.read(spec_file_name)
+          .gsub(/^(\s+)\/\/.+$/, '') # comments in json
   specs = JSON.parse(f)
 
   Class.new(Minitest::Test) do
