@@ -1,0 +1,59 @@
+{
+    "require": ["mock"],
+    "specs": [
+        {
+            "title": "mock null",
+            "input": ["ok", {"foo": "bar"}],
+            "flow": [["ok", "mock", null]],
+            "expected": ["ok", null]
+        },
+        {
+            "title": "mock false",
+            "input": ["ok", {"foo": "bar"}],
+            "flow": [["ok", "mock", false]],
+            "expected": ["ok", false]
+        },
+        {
+            "title": "mock true",
+            "input": ["ok", {"foo": "bar"}],
+            "flow": [["ok", "mock", true]],
+            "expected": ["ok", true]
+        },
+        {
+            "title": "mock string",
+            "input": ["ok", {"foo": "bar"}],
+            "flow": [["ok", "mock", "foo"]],
+            "expected": ["ok", "foo"]
+        },
+        {
+            "title": "mock int",
+            "input": ["ok", {"foo": "bar"}],
+            "flow": [["ok", "mock", 101]],
+            "expected": ["ok", 101]
+        },
+        {
+            "title": "mock float",
+            "input": ["ok", {"foo": "bar"}],
+            "flow": [["ok", "mock", 10.1]],
+            "expected": ["ok", 10.1]
+        },
+        {
+            "title": "mock empty object",
+            "input": ["ok", {"foo": "bar"}],
+            "flow": [["ok", "mock", {}]],
+            "expected": ["ok", {}]
+        },
+        {
+            "title": "mock empty array",
+            "input": ["ok", {"foo": "bar"}],
+            "flow": [["ok", "mock", []]],
+            "expected": ["ok", []]
+        },
+        {
+            "title": "mock jsonoid",
+            "input": ["ok", {"fuz": "bar"}],
+            "flow": [["ok", "mock", {"foo": ["bar", 1, 0.1, "baz"]}]],
+            "expected": ["ok", {"foo": ["bar", 1, 0.1, "baz"]}]
+        }
+    ]
+}
