@@ -123,7 +123,11 @@ class Kotolang
     flow.reduce(input) do |memo, step|
       input_way, input = memo
       step_way, pipe, config = step
-      pipes[pipe].(input, config)
+      if input_way == step_way
+        pipes[pipe].(input, config) # call step
+      else
+        memo # bypass
+      end
     end
   end
 end
