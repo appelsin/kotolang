@@ -1,0 +1,21 @@
+{
+    "require": ["std:wayflow"],
+    "specs": [
+        {
+            "title": "Switch to a calculated way",
+            "input": ["ok", "FOO"],
+            "flow": [
+                ["ok", "std:wayflow", [
+                    ["ok", "mock", "other"]
+                ]
+            ]],
+            "expected": ["other", "FOO"]
+        },
+        {
+            "title": "Error on wrong type (string)",
+            "input": ["ok", "FOO"],
+            "flow": [["ok", "std:wayflow", "other"]],
+            "expected": ["error", null]
+        }
+    ]
+}

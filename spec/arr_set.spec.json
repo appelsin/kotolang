@@ -1,0 +1,47 @@
+{
+    "require": ["arr:set"],
+    "specs": [
+        {
+            "title": "Replaces value by index in array",
+            "input": ["ok", ["FOO", "BAR", "BAZ"]],
+            "flow": [["ok", "arr:set", [1, "NEW"]]],
+            "expected": ["ok", ["FOO", "NEW", "BAZ"]]
+        },
+        {
+            "title": "Sets value by index to array",
+            "input": ["ok", ["FOO", "BAR"]],
+            "flow": [["ok", "arr:set", [2, "NEW"]]],
+            "expected": ["ok", ["FOO", "BAR", "NEW"]]
+        },
+        {
+            "title": "Fills array with nulls",
+            "input": ["ok", ["FOO", "BAR"]],
+            "flow": [["ok", "arr:set", [4, "NEW"]]],
+            "expected": ["ok", ["FOO", "BAR", null, null, "NEW"]]
+        },
+        {
+            "title": "Returns error on wrong input (null)",
+            "input": ["ok", null],
+            "flow": [["ok", "arr:set", "baz"]],
+            "expected": ["error", null]
+        },
+        {
+            "title": "Returns error on wrong input (object)",
+            "input": ["ok", {"foo": "BAR"}],
+            "flow": [["ok", "arr:set", "baz"]],
+            "expected": ["error", null]
+        },
+        {
+            "title": "Returns error on wrong config (null)",
+            "input": ["ok", ["FOO", "BAR"]],
+            "flow": [["ok", "arr:set", null]],
+            "expected": ["error", null]
+        },
+        {
+            "title": "Returns error on wrong config (str)",
+            "input": ["ok", ["FOO", "BAR"]],
+            "flow": [["ok", "arr:set", "1"]],
+            "expected": ["error", null]
+        }
+    ]
+}

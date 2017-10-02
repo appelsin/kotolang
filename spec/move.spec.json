@@ -1,30 +1,30 @@
 {
     "require": ["move"],
     "specs": [
-        {
-            "title": "Move key in object",
-            "input": ["ok", {"foo": "FOO", "bar": "BAR"}],
-            "flow": [["ok", "move", {"from": "foo", "to": "norf"}]],
-            "expected": ["ok", {"bar": "BAR", "norf": "FOO"}]
-        },
-        {
-            "title": "Replaces existed key in object",
-            "input": ["ok", {"foo": "FOO", "bar": "BAR"}],
-            "flow": [["ok", "move", {"from": "foo", "to": "bar"}]],
-            "expected": ["ok", {"bar": "FOO"}]
-        },
-        {
-            "title": "Move key in null",
-            "input": ["ok", null],
-            "flow": [["ok", "move", {"from": "foo", "to": "norf"}]],
-            "expected": ["error",
-                {"errors":[{
-                    "title":"\"move\" expects object input",
-                    "detail":"Input type: NilClass",
-                    "debug":{"input":null}
-                }]
-            }],
-            "todo": "remove detail and debug"
-        }
+        // {
+        //     "title": "Move key in object",
+        //     "input": ["ok", {"foo": "FOO", "bar": "BAR"}],
+        //     "flow": [["ok", "move", {"from": "foo", "to": "norf"}]],
+        //     "expected": ["ok", {"bar": "BAR", "norf": "FOO"}]
+        // },
+        // {
+        //     "title": "Replaces existed key in object",
+        //     "input": ["ok", {"foo": "FOO", "bar": "BAR"}],
+        //     "flow": [["ok", "move", {"from": "foo", "to": "bar"}]],
+        //     "expected": ["ok", {"bar": "FOO"}]
+        // },
+        // {
+        //     "title": "Move key in null",
+        //     "input": ["ok", null],
+        //     "flow": [["ok", "move", {"from": "foo", "to": "norf"}]],
+        //     "expected": ["error",
+        //         {"errors":[{
+        //             "title":"\"move\" expects object input",
+        //             "detail":"Input type: NilClass",
+        //             "debug":{"input":null}
+        //         }]
+        //     }],
+        //     "todo": "remove detail and debug"
+        // }
     ]
 }

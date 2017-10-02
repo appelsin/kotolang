@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module KotoHelpers
   def self.safe_dig(input, path)
     array_path = path.is_a?(Array) ? path : [path]
@@ -43,13 +45,61 @@ module KotoHelpers
 end
 
 module BypassPipe
-  def self.call(input, config)
+  def self.call(input, config, pipes)
     ['ok', input]
   end
 end
 
+module Arr
+  module Get
+    def self.call(input, config, pipes)
+      if input.is_a?(Array) && config.is_a?(Integer)
+        ['ok', input[config]]
+      else
+        ['error', nil]
+      end
+    end
+  end
+
+  module Set
+    def self.call(input, config, pipes)
+      if input.is_a?(Array) && config.is_a?(Array) && config.length == 2 && config[0].is_a?(Integer)
+        result = input.dup
+        result[config[0]] = config[1]
+        ['ok', result]
+      else
+        ['error', nil]
+      end
+    end
+  end
+end
+
+module Obj
+  module Get
+    def self.call(input, config, pipes)
+      if input.is_a?(Hash) && config.is_a?(String)
+        ['ok', input[config]]
+      else
+        ['error', nil]
+      end
+    end
+  end
+
+  module Set
+    def self.call(input, config, pipes)
+      if input.is_a?(Hash) && config.is_a?(Array) && config.length == 2 && config[0].is_a?(String)
+        result = input.dup
+        result[config[0]] = config[1]
+        ['ok', result]
+      else
+        ['error', nil]
+      end
+    end
+  end
+end
+
 module GetPipe
-  def self.call(input, config)
+  def self.call(input, config, pipes)
     if (input.is_a?(Hash) || input.is_a?(Array))
       path = config['path']
       if path
@@ -79,7 +129,7 @@ end
 # end
 
 module CopyPipe
-  def self.call(input, config)
+  def self.call(input, config, pipes)
     if input.is_a?(Hash)
       from, to = config['from'], config['to']
       value = KotoHelpers.safe_dup(input[from])
@@ -97,13 +147,13 @@ module CopyPipe
 end
 
 module MockPipe
-  def self.call(input, config)
+  def self.call(input, config, pipes)
     ['ok', config]
   end
 end
 
 module MovePipe
-  def self.call(input, config)
+  def self.call(input, config, pipes)
     if input.is_a?(Hash)
       from, to = config['from'], config['to']
       output = KotoHelpers.safe_dup(input)
@@ -124,10 +174,51 @@ class Kotolang
       input_way, input = memo
       step_way, pipe, config = step
       if input_way == step_way
-        pipes[pipe].(input, config) # call step
+        pipes[pipe].(input, config, pipes)
       else
         memo # bypass
       end
     end
   end
+end
+
+module Std
+  module Way
+    def self.call(input, config, pipes)
+      if config.is_a?(String)
+        [config, input]
+      else
+        ['error', nil]
+      end
+    end
+  end
+
+  module Call
+    def self.call(input, config, pipes)
+      if config.is_a?(Array)
+        ::Kotolang.(['ok', input], config, pipes)
+      else
+        ['error', nil]
+      end
+    end
+  end
+
+  module WayFlow
+    def self.call(input, config, pipes)
+      way, result = Call.(input, config, pipes)
+      if 'ok' == way
+        [result, input]
+      else
+        ['error', nil]
+      end
+    end
+  end
+
+  # module Switch
+  #   def self.call(input, config, pipes)
+  #     Call.(
+  #       input,
+  #     )
+  #   end
+  # end
 end

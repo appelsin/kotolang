@@ -1,0 +1,31 @@
+{
+    "require": ["std:call", "mock", "std:way"],
+    "specs": [
+        {
+            "title": "Calls flow",
+            "input": ["ok", "FOO"],
+            "flow": [
+                ["ok", "std:call", [
+                    ["ok", "mock", "BAR"]
+                ]]
+            ],
+            "expected": ["ok", "BAR"]
+        },
+        {
+            "title": "Keeps way",
+            "input": ["ok", "FOO"],
+            "flow": [
+                ["ok", "std:call", [
+                    ["ok", "std:way", "other"]
+                ]]
+            ],
+            "expected": ["other", "FOO"]
+        },
+        {
+            "title": "Error on wrong type (string)",
+            "input": ["ok", "FOO"],
+            "flow": [["ok", "std:call", "bypass"]],
+            "expected": ["error", null]
+        }
+    ]
+}

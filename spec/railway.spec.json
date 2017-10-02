@@ -1,0 +1,11 @@
+{
+    "require": ["mock"],
+    "specs": [
+        {
+            "title": "Doesn't call step from other way",
+            "input": ["ok", "FOO"],
+            "flow": [["error", "mock", "BAR"]],
+            "expected": ["ok", "FOO"]
+        }
+    ]
+}

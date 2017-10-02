@@ -5,10 +5,17 @@ require_relative "../lib/kotolang.rb"
 
 pipes = {
   'bypass' => BypassPipe,
-  'copy' => CopyPipe,
-  'get' => GetPipe,
   'mock' => MockPipe,
-  'move' => MovePipe,
+  'obj:get' => Obj::Get,
+  'obj:set' => Obj::Set,
+  'arr:get' => Arr::Get,
+  'arr:set' => Arr::Set,
+  'std:way' => Std::Way,
+  'std:call' => Std::Call,
+  'std:wayflow' => Std::WayFlow,
+  #'copy' => CopyPipe,
+  #'get' => GetPipe,
+  #'move' => MovePipe,
   # 'set' => SetPipe
 }
 

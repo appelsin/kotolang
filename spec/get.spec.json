@@ -1,35 +1,35 @@
 {
     "require": ["get"],
     "specs": [
-        {
-            "title": "Gets key in object",
-            "input": ["ok", {"foo": "FOO", "bar": "BAR"}],
-            "flow": [["ok", "get", {"path": "bar"}]],
-            "expected": ["ok", "BAR"]
-        },
-        {
-            "title": "Gets nested key in object",
-            "input": ["ok", {"foo": {"bar": "BAR"}}],
-            "flow": [["ok", "get", {"path": ["foo", "bar"]}]],
-            "expected": ["ok", "BAR"]
-        },
-        {
-            "title": "Gets index in array",
-            "input": ["ok", ["FOO", "BAR"]],
-            "flow": [["ok", "get", {"path": 1}]],
-            "expected": ["ok", "BAR"]
-        },
-        {
-            "title": "Gets nested index in array",
-            "input": ["ok", ["FOO", ["BAR", "BAZ"]]],
-            "flow": [["ok", "get", {"path": [1, 0]}]],
-            "expected": ["ok", "BAR"]
-        },
-        {
-            "title": "Gets nested value in mixed struct",
-            "input": ["ok", ["FOO", {"bar": ["BAR", "BAZ"]}]],
-            "flow": [["ok", "get", {"path": [1, "bar", 0]}]],
-            "expected": ["ok", "BAR"]
-        }
+        // {
+        //     "title": "Gets key in object",
+        //     "input": ["ok", {"foo": "FOO", "bar": "BAR"}],
+        //     "flow": [["ok", "get", {"path": "bar"}]],
+        //     "expected": ["ok", "BAR"]
+        // },
+        // {
+        //     "title": "Gets nested key in object",
+        //     "input": ["ok", {"foo": {"bar": "BAR"}}],
+        //     "flow": [["ok", "get", {"path": ["foo", "bar"]}]],
+        //     "expected": ["ok", "BAR"]
+        // },
+        // {
+        //     "title": "Gets index in array",
+        //     "input": ["ok", ["FOO", "BAR"]],
+        //     "flow": [["ok", "get", {"path": 1}]],
+        //     "expected": ["ok", "BAR"]
+        // },
+        // {
+        //     "title": "Gets nested index in array",
+        //     "input": ["ok", ["FOO", ["BAR", "BAZ"]]],
+        //     "flow": [["ok", "get", {"path": [1, 0]}]],
+        //     "expected": ["ok", "BAR"]
+        // },
+        // {
+        //     "title": "Gets nested value in mixed struct",
+        //     "input": ["ok", ["FOO", {"bar": ["BAR", "BAZ"]}]],
+        //     "flow": [["ok", "get", {"path": [1, "bar", 0]}]],
+        //     "expected": ["ok", "BAR"]
+        // }
     ]
 }

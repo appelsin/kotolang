@@ -1,36 +1,36 @@
 {
     "require": ["copy"],
     "specs": [
-        {
-            "title": "Copy key in object",
-            "input": ["ok", {"foo": "FOO", "bar": "BAR"}],
-            "flow": [["ok", "copy", {"from": "foo", "to": "norf"}]],
-            "expected": ["ok", {"foo": "FOO", "bar": "BAR", "norf": "FOO"}]
-        },
-        {
-            "title": "Replaces existed key in object",
-            "input": ["ok", {"foo": "FOO", "bar": "BAR"}],
-            "flow": [["ok", "copy", {"from": "foo", "to": "bar"}]],
-            "expected": ["ok", {"foo": "FOO", "bar": "FOO"}]
-        },
-        {
-            "title": "Returns value when 'to' not set",
-            "input": ["ok", {"foo": "FOO", "bar": "BAR"}],
-            "flow": [["ok", "copy", {"from": "foo"}]],
-            "expected": ["ok", "FOO"]
-        },
-        {
-            "title": "Returns error on null copy",
-            "input": ["ok", null],
-            "flow": [["ok", "copy", {"from": "foo", "to": "norf"}]],
-            "expected": ["error",
-                {"errors":[{
-                    "title":"\"copy\" expects object input",
-                    "detail":"Input type: NilClass",
-                    "debug":{"input":null}
-                }]
-            }],
-            "todo": "remove detail and debug"
-        }
+        // {
+        //     "title": "Copy key in object",
+        //     "input": ["ok", {"foo": "FOO", "bar": "BAR"}],
+        //     "flow": [["ok", "copy", {"from": "foo", "to": "norf"}]],
+        //     "expected": ["ok", {"foo": "FOO", "bar": "BAR", "norf": "FOO"}]
+        // },
+        // {
+        //     "title": "Replaces existed key in object",
+        //     "input": ["ok", {"foo": "FOO", "bar": "BAR"}],
+        //     "flow": [["ok", "copy", {"from": "foo", "to": "bar"}]],
+        //     "expected": ["ok", {"foo": "FOO", "bar": "FOO"}]
+        // },
+        // {
+        //     "title": "Returns value when 'to' not set",
+        //     "input": ["ok", {"foo": "FOO", "bar": "BAR"}],
+        //     "flow": [["ok", "copy", {"from": "foo"}]],
+        //     "expected": ["ok", "FOO"]
+        // },
+        // {
+        //     "title": "Returns error on null copy",
+        //     "input": ["ok", null],
+        //     "flow": [["ok", "copy", {"from": "foo", "to": "norf"}]],
+        //     "expected": ["error",
+        //         {"errors":[{
+        //             "title":"\"copy\" expects object input",
+        //             "detail":"Input type: NilClass",
+        //             "debug":{"input":null}
+        //         }]
+        //     }],
+        //     "todo": "remove detail and debug"
+        // }
     ]
 }
