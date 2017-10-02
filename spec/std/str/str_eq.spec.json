@@ -1,0 +1,23 @@
+{
+    "require": ["std:str:eq"],
+    "specs": [
+        {
+            "title": "true when string equals",
+            "input": ["ok", "FOO"],
+            "flow": [["ok", "std:str:eq", "FOO"]],
+            "expected": ["ok", true]
+        },
+        {
+            "title": "false when string not equals",
+            "input": ["ok", "FOO"],
+            "flow": [["ok", "std:str:eq", "foo"]],
+            "expected": ["ok", false]
+        },
+        {
+            "title": "Error on wrong type (array)",
+            "input": ["ok", "FOO"],
+            "flow": [["ok", "std:way", ["other"]]],
+            "expected": ["error", null]
+        }
+    ]
+}

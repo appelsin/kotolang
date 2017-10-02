@@ -1,40 +1,40 @@
 {
-    "require": ["obj:set"],
+    "require": ["std:obj:set"],
     "specs": [
         {
             "title": "Sets value by key to object",
             "input": ["ok", {"foo": "FOO"}],
-            "flow": [["ok", "obj:set", ["bar", "BAR"]]],
+            "flow": [["ok", "std:obj:set", ["bar", "BAR"]]],
             "expected": ["ok", {"foo": "FOO", "bar": "BAR"}]
         },
         {
             "title": "Replaces value by key in object",
             "input": ["ok", {"foo": "FOO", "bar": "BAR"}],
-            "flow": [["ok", "obj:set", ["bar", "BAZ"]]],
+            "flow": [["ok", "std:obj:set", ["bar", "BAZ"]]],
             "expected": ["ok", {"foo": "FOO", "bar": "BAZ"}]
         },
         {
             "title": "Returns error on wrong input (null)",
             "input": ["ok", null],
-            "flow": [["ok", "obj:set", "baz"]],
+            "flow": [["ok", "std:obj:set", "baz"]],
             "expected": ["error", null]
         },
         {
             "title": "Returns error on wrong input (array)",
             "input": ["ok", []],
-            "flow": [["ok", "obj:set", "baz"]],
+            "flow": [["ok", "std:obj:set", "baz"]],
             "expected": ["error", null]
         },
         {
             "title": "Returns error on wrong config (null)",
             "input": ["ok", {"foo": "FOO", "bar": "BAR"}],
-            "flow": [["ok", "obj:set", null]],
+            "flow": [["ok", "std:obj:set", null]],
             "expected": ["error", null]
         },
         {
             "title": "Returns error on wrong config (int)",
             "input": ["ok", {"foo": "FOO", "10": "BAR"}],
-            "flow": [["ok", "obj:set", 10]],
+            "flow": [["ok", "std:obj:set", 10]],
             "expected": ["error", null]
         }
     ]

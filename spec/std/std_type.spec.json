@@ -1,0 +1,69 @@
+{
+    "require": ["std:type", "mock"],
+    "specs": [
+        {
+            "title": "Recognize string",
+            "input": ["ok", "FOO"],
+            "flow": [
+                ["ok", "std:type", null]
+            ],
+            "expected": ["ok", "string"]
+        },
+        {
+            "title": "Recognize null",
+            "input": ["ok", null],
+            "flow": [
+                ["ok", "std:type", null]
+            ],
+            "expected": ["ok", "null"]
+        },
+        {
+            "title": "Recognize array",
+            "input": ["ok", ["FOO"]],
+            "flow": [
+                ["ok", "std:type", null]
+            ],
+            "expected": ["ok", "array"]
+        },
+        {
+            "title": "Recognize object",
+            "input": ["ok", {}],
+            "flow": [
+                ["ok", "std:type", null]
+            ],
+            "expected": ["ok", "object"]
+        },
+        {
+            "title": "Recognize integer",
+            "input": ["ok", -10],
+            "flow": [
+                ["ok", "std:type", null]
+            ],
+            "expected": ["ok", "integer"]
+        },
+        {
+            "title": "Recognize boolean",
+            "input": ["ok", false],
+            "flow": [
+                ["ok", "std:type", null]
+            ],
+            "expected": ["ok", "boolean"]
+        },
+        {
+            "title": "Recognize boolean",
+            "input": ["ok", true],
+            "flow": [
+                ["ok", "std:type", null]
+            ],
+            "expected": ["ok", "boolean"]
+        },
+        {
+            "title": "Recognize float",
+            "input": ["ok", 1.1],
+            "flow": [
+                ["ok", "std:type", null]
+            ],
+            "expected": ["ok", "float"]
+        }
+    ]
+}

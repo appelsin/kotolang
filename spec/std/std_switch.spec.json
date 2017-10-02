@@ -1,0 +1,113 @@
+{
+    "require": ["std:switch", "mock"],
+    "specs": [
+        // {
+        //     "title": "Calls expression by value",
+        //     "input": ["ok", "FOO"],
+        //     "flow": [
+        //         ["ok", "std:call", [
+        //             ["ok", "std:way", "bar"],
+        //             ["foo", "mock", "FOO"],
+        //             ["bar", "mock", "BAR"]
+        //             // {
+        //             //     "foo": [["ok", "mock", "FOO"]],
+        //             //     "bar": [["ok", "mock", "BAR"]]
+        //             // },
+        //             // [["ok", "mock", "BAZ"]]
+        //         ]]
+        //     ],
+        //     "expected": ["ok", "BAR"]            
+        // },
+        // {
+        //     "title": "Calls expression by value",
+        //     "input": ["ok", "FOO"],
+        //     "flow": [
+        //         ["ok", "std:call", [
+        //             ["ok", "std:way", "bar"],
+        //             ["foo", "mock", "FOO"],
+        //             ["bar", "mock", "BAR"]
+        //             // {
+        //             //     "foo": [["ok", "mock", "FOO"]],
+        //             //     "bar": [["ok", "mock", "BAR"]]
+        //             // },
+        //             // [["ok", "mock", "BAZ"]]
+        //         ]]
+        //     ],
+        //     "expected": ["ok", "BAR"]            
+        // },
+        // {
+        //     "title": "Calls expression by value",
+        //     "input": ["ok", "FOO"],
+        //     "flow": [
+        //         ["ok", "std:call", [
+        //             ["ok", "std:way", "bar"],
+        //             ["foo", "mock", "FOO"],
+        //             ["bar", "mock", "BAR"]
+        //             // {
+        //             //     "foo": [["ok", "mock", "FOO"]],
+        //             //     "bar": [["ok", "mock", "BAR"]]
+        //             // },
+        //             // [["ok", "mock", "BAZ"]]
+        //         ]]
+        //     ],
+        //     "expected": ["ok", "BAR"]            
+        // },
+        // {
+        //     "title": "Calls expression by value",
+        //     "input": ["ok", "FOO"],
+        //     "flow": [
+        //         ["ok", "std:call", [
+        //             ["ok", "str:eq", "bar"],
+        //             ["foo", "mock", "FOO"],
+        //             ["bar", "mock", "BAR"]
+        //             // {
+        //             //     "foo": [["ok", "mock", "FOO"]],
+        //             //     "bar": [["ok", "mock", "BAR"]]
+        //             // },
+        //             // [["ok", "mock", "BAZ"]]
+        //         ]]
+        //     ],
+        //     "expected": ["ok", "BAR"]            
+        // },
+        // {
+        //     "title": "Calls expression by value",
+        //     "input": ["ok", "FOO"],
+        //     "flow": [
+        //         ["ok", "std:switch", [
+        //             [["ok", "mock", "foo"]],
+        //             {
+        //                 "foo": [["ok", "mock", "FOO"]],
+        //                 "bar": [["ok", "mock", "BAR"]]
+        //             },
+        //             [["ok", "mock", "BAZ"]]
+        //         ]]
+        //     ],
+        //     "expected": ["ok", "FOO"]
+        // },
+        // {
+        //     "title": "Calls else when expr is false",
+        //     "input": ["ok", "FOO"],
+        //     "flow": [
+        //         ["ok", "std:switch", [
+        //             [["ok", "mock", "else"]],
+        //             {
+        //                 "then": [["ok", "mock", "true"]],
+        //                 "else": [["ok", "mock", "false"]]
+        //             }
+        //         ]]
+        //     ],
+        //     "expected": ["ok", "false"]
+        // },
+        // {
+        //     "title": "Returns null if 'else' is not given",
+        //     "input": ["ok", "FOO"],
+        //     "flow": [
+        //         ["ok", "std:switch", {
+        //             "flow": [["ok", "mock", false]],
+        //             "then": [["ok", "mock", "true"]]
+        //         }]
+        //     ],
+        //     "expected": ["ok", null]
+        // }
+    ]
+}

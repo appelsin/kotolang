@@ -1,46 +1,46 @@
 {
-    "require": ["arr:get"],
+    "require": ["std:arr:get"],
     "specs": [
         {
             "title": "Gets key from object",
             "input": ["ok", ["FOO", "BAR", "BAZ"]],
-            "flow": [["ok", "arr:get", 1]],
+            "flow": [["ok", "std:arr:get", 1]],
             "expected": ["ok", "BAR"]
         },
         {
             "title": "Gets key from object (zero)",
             "input": ["ok", ["FOO", "BAR"]],
-            "flow": [["ok", "arr:get", 0]],
+            "flow": [["ok", "std:arr:get", 0]],
             "expected": ["ok", "FOO"]
         },
         {
             "title": "Returns null if no such key",
             "input": ["ok", ["FOO", "BAR"]],
-            "flow": [["ok", "arr:get", 2]],
+            "flow": [["ok", "std:arr:get", 2]],
             "expected": ["ok", null]
         },
         {
             "title": "Returns error on wrong input (null)",
             "input": ["ok", null],
-            "flow": [["ok", "arr:get", 0]],
+            "flow": [["ok", "std:arr:get", 0]],
             "expected": ["error", null]
         },
         {
             "title": "Returns error on wrong input (object)",
             "input": ["ok", {}],
-            "flow": [["ok", "arr:get", 0]],
+            "flow": [["ok", "std:arr:get", 0]],
             "expected": ["error", null]
         },
         {
             "title": "Returns error on wrong config (null)",
             "input": ["ok", ["FOO", "BAR"]],
-            "flow": [["ok", "arr:get", null]],
+            "flow": [["ok", "std:arr:get", null]],
             "expected": ["error", null]
         },
         {
             "title": "Returns error on wrong config (string)",
             "input": ["ok", ["FOO", "BAR"]],
-            "flow": [["ok", "arr:get", "0"]],
+            "flow": [["ok", "std:arr:get", "0"]],
             "expected": ["error", null]
         }
     ]

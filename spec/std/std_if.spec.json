@@ -1,0 +1,40 @@
+{
+    "require": ["std:if", "mock"],
+    "specs": [
+        {
+            "title": "Calls then when expr is true",
+            "input": ["ok", "FOO"],
+            "flow": [
+                ["ok", "std:if", {
+                    "flow": [["ok", "mock", true]],
+                    "then": [["ok", "mock", "true"]],
+                    "else": [["ok", "mock", "false"]]
+                }]
+            ],
+            "expected": ["ok", "true"]
+        },
+        {
+            "title": "Calls else when expr is false",
+            "input": ["ok", "FOO"],
+            "flow": [
+                ["ok", "std:if", {
+                    "flow": [["ok", "mock", false]],
+                    "then": [["ok", "mock", "true"]],
+                    "else": [["ok", "mock", "false"]]
+                }]
+            ],
+            "expected": ["ok", "false"]
+        },
+        {
+            "title": "Returns null if 'else' is not given",
+            "input": ["ok", "FOO"],
+            "flow": [
+                ["ok", "std:if", {
+                    "flow": [["ok", "mock", false]],
+                    "then": [["ok", "mock", "true"]]
+                }]
+            ],
+            "expected": ["ok", null]
+        }
+    ]
+}
