@@ -1,0 +1,15 @@
+{
+    "require": ["std:arr:map"],
+    "specs": [
+        {
+            "title": "Checks if index exists in given array",
+            "input": ["ok", ["FOO", "BAR", "BAZ"]],
+            "flow": [
+                ["ok", "std:arr:map", [
+                    ["ok", "std:str:set", [2, " "]]
+                ]]
+            ],
+            "expected": ["ok", ["FO ", "BA ", "BA "]]
+        }
+    ]
+}

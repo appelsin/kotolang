@@ -1,0 +1,11 @@
+{
+    "require": ["std:str:set"],
+    "specs": [
+        {
+            "title": "Replaces value by index in array",
+            "input": ["ok", "BAR"],
+            "flow": [["ok", "std:str:set", [2, "Z"]]],
+            "expected": ["ok", "BAZ"]
+        }
+    ]
+}

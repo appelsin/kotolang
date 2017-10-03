@@ -36,4 +36,18 @@ module Arr
       end
     end
   end
+
+  module Map
+    def self.call(input, config, pipes)
+      if input.is_a?(Array) && config.is_a?(Array)
+        ['ok', input.map do |val|
+          way, result = ::Kotolang::Runner.(['ok', val], config, pipes)
+          return [way, result] if way != 'ok'
+          result
+        end]
+      else
+        ['error', nil]
+      end
+    end
+  end
 end

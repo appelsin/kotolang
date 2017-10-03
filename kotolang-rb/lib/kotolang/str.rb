@@ -15,6 +15,20 @@ module Str
     end
   end
 
+  module Set
+    def self.call(input, config, pipes)
+      if input.is_a?(String) && config.is_a?(Array) && config.length == 2 &&
+            config[0].is_a?(Integer) &&
+            config[1].is_a?(String) && config[1].length == 1
+        result = input.dup
+        result[config[0]] = config[1]
+        ['ok', result.freeze]
+      else
+        ['error', nil]
+      end
+    end
+  end
+
   module Eq
     def self.call(input, config, pipes)
       if input.is_a?(String) && config.is_a?(String)
