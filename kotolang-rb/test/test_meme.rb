@@ -4,8 +4,8 @@ require "json"
 require_relative "../lib/kotolang.rb"
 
 pipes = {
-  'bypass' => BypassPipe,
-  'mock' => MockPipe,
+  'bypass' => Bypass,
+  'mock' => Mock,
   'std:obj:get' => Obj::Get,
   'std:obj:set' => Obj::Set,
   'std:arr:get' => Arr::Get,
@@ -17,7 +17,8 @@ pipes = {
   'std:if' => Std::If,
   'std:type' => Std::Type,
   'get' => -> (input, config, pipes) do
-    Kotolang.(['ok', input], [
+    ::Kotolang::Runner.(['ok', [input, config]], [
+      ['ok', 'std:arr:get', 0],
       ['ok', 'std:way:call', [
         ['ok', 'std:type', nil]
       ]],
@@ -33,22 +34,32 @@ pipes = {
   'debug' => -> (input, config) do
     puts [input, config]
   end
-}
+}.freeze
+
+test_root = File.join(
+  File.dirname(__FILE__),
+  '..', '..', 'spec'
+)
 
 Dir.glob(
-  File.join(
-    File.dirname(__FILE__),
-    '..', '..', 'spec', '**', '*.spec.json'
-  )
+  File.join(test_root, '**', '*.spec.json')
 ).each do |spec_file_name|
   f = File.read(spec_file_name)
           .gsub(/^(\s+)\/\/.+$/, '') # comments in json
   specs = JSON.parse(f)
 
   Class.new(Minitest::Test) do
+    define_singleton_method :to_s do
+      spec_file_name
+    end
+
     specs['specs'].each do |spec|
       define_method :"test_#{spec['title']}" do
-        assert_equal spec['expected'], Kotolang.(spec['input'], spec['flow'], pipes)
+        assert_equal spec['expected'], ::Kotolang::Runner.(
+          spec['input'].freeze,
+          spec['flow'].freeze,
+          pipes
+        )
       end
     end
   end
