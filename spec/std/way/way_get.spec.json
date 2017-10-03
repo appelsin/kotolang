@@ -1,0 +1,11 @@
+{
+    "require": ["std:way:get"],
+    "specs": [
+        {
+            "title": "Returns current way",
+            "input": ["other", "FOO"],
+            "flow": [[null, "std:way:get", "other"]],
+            "expected": ["ok", "other"]
+        }
+    ]
+}

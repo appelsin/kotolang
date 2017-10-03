@@ -16,7 +16,7 @@
         {
             "title": "Error on wrong type (array)",
             "input": ["ok", "FOO"],
-            "flow": [["ok", "std:way", ["other"]]],
+            "flow": [["ok", "std:str:eq", ["other"]]],
             "expected": ["error", null]
         }
     ]

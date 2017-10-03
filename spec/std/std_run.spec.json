@@ -1,11 +1,11 @@
 {
-    "require": ["std:call", "mock", "std:way"],
+    "require": ["std:run", "mock", "std:way:set"],
     "specs": [
         {
             "title": "Calls flow",
             "input": ["ok", "FOO"],
             "flow": [
-                ["ok", "std:call", [
+                ["ok", "std:run", [
                     ["ok", "mock", "BAR"]
                 ]]
             ],
@@ -15,8 +15,8 @@
             "title": "Keeps way",
             "input": ["ok", "FOO"],
             "flow": [
-                ["ok", "std:call", [
-                    ["ok", "std:way", "other"]
+                ["ok", "std:run", [
+                    ["ok", "std:way:set", "other"]
                 ]]
             ],
             "expected": ["other", "FOO"]
@@ -24,7 +24,7 @@
         {
             "title": "Error on wrong type (string)",
             "input": ["ok", "FOO"],
-            "flow": [["ok", "std:call", "bypass"]],
+            "flow": [["ok", "std:run", "bypass"]],
             "expected": ["error", null]
         }
     ]

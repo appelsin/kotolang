@@ -2,39 +2,51 @@
     "require": ["std:if", "mock"],
     "specs": [
         {
-            "title": "Calls then when expr is true",
+            "title": "Calls config#1 when config#0 returns true",
             "input": ["ok", "FOO"],
             "flow": [
-                ["ok", "std:if", {
-                    "flow": [["ok", "mock", true]],
-                    "then": [["ok", "mock", "true"]],
-                    "else": [["ok", "mock", "false"]]
-                }]
+                ["ok", "std:if", [
+                    [["ok", "mock", true]],
+                    [["ok", "mock", "true"]],
+                    [["ok", "mock", "false"]]
+                ]]
             ],
             "expected": ["ok", "true"]
         },
         {
-            "title": "Calls else when expr is false",
+            "title": "Calls config#2 when config#0 returns false",
             "input": ["ok", "FOO"],
             "flow": [
-                ["ok", "std:if", {
-                    "flow": [["ok", "mock", false]],
-                    "then": [["ok", "mock", "true"]],
-                    "else": [["ok", "mock", "false"]]
-                }]
+                ["ok", "std:if", [
+                    [["ok", "mock", false]],
+                    [["ok", "mock", "true"]],
+                    [["ok", "mock", "false"]]
+                ]]
             ],
             "expected": ["ok", "false"]
-        },
-        {
-            "title": "Returns null if 'else' is not given",
-            "input": ["ok", "FOO"],
-            "flow": [
-                ["ok", "std:if", {
-                    "flow": [["ok", "mock", false]],
-                    "then": [["ok", "mock", "true"]]
-                }]
-            ],
-            "expected": ["ok", null]
         }
+        // {
+        //     "title": "Calls else when expr is false",
+        //     "input": ["ok", "FOO"],
+        //     "flow": [
+        //         ["ok", "std:if", {
+        //             "flow": [["ok", "mock", false]],
+        //             "then": [["ok", "mock", "true"]],
+        //             "else": [["ok", "mock", "false"]]
+        //         }]
+        //     ],
+        //     "expected": ["ok", "false"]
+        // },
+        // {
+        //     "title": "Returns null if 'else' is not given",
+        //     "input": ["ok", "FOO"],
+        //     "flow": [
+        //         ["ok", "std:if", {
+        //             "flow": [["ok", "mock", false]],
+        //             "then": [["ok", "mock", "true"]]
+        //         }]
+        //     ],
+        //     "expected": ["ok", null]
+        // }
     ]
 }

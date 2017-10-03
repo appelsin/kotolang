@@ -1,0 +1,13 @@
+{
+    "require": ["std:call", "std:obj:set"],
+    "specs": [
+        {
+            "title": "Bypass null",
+            "input": ["ok", [{"foo": "FOO"}, ["bar", "BAR"]]],
+            "flow": [
+                ["ok", "std:call", "std:obj:set"]
+            ],
+            "expected": ["ok", {"foo": "FOO", "bar": "BAR"}]
+        }
+    ]
+}

@@ -18,3 +18,5 @@ module Mock
     ['ok', config]
   end
 end
+
+require_relative './kotolang/pipes'

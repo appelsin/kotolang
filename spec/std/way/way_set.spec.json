@@ -1,16 +1,16 @@
 {
-    "require": ["std:way"],
+    "require": ["std:way:set"],
     "specs": [
         {
             "title": "Switch to given way",
             "input": ["ok", "FOO"],
-            "flow": [["ok", "std:way", "other"]],
+            "flow": [["ok", "std:way:set", "other"]],
             "expected": ["other", "FOO"]
         },
         {
             "title": "Error on wrong type (array)",
             "input": ["ok", "FOO"],
-            "flow": [["ok", "std:way", ["other"]]],
+            "flow": [["ok", "std:way:set", ["other"]]],
             "expected": ["error", null]
         }
     ]

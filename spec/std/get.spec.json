@@ -1,11 +1,23 @@
 {
-    "require": ["get"],
+    "require": ["std:get"],
     "specs": [
         {
             "title": "Gets key in object",
             "input": ["ok", {"foo": "FOO", "bar": "BAR"}],
-            "flow": [["ok", "get", "bar"]],
+            "flow": [["ok", "std:get", "bar"]],
             "expected": ["ok", "BAR"]
+        },
+        {
+            "title": "Gets key in array",
+            "input": ["ok", ["FOO", "BAR"]],
+            "flow": [["ok", "std:get", 1]],
+            "expected": ["ok", "BAR"]
+        },
+        {
+            "title": "Error on wrong type",
+            "input": ["ok", null],
+            "flow": [["ok", "std:get", 1]],
+            "expected": ["error", ["Function is not implemented for input type", "If is not implemented"]]
         }
         // {
         //     "title": "Gets nested key in object",

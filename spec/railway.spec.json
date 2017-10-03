@@ -6,6 +6,18 @@
             "input": ["ok", "FOO"],
             "flow": [["error", "mock", "BAR"]],
             "expected": ["ok", "FOO"]
+        },
+        {
+            "title": "Call null always",
+            "input": ["unknown", "FOO"],
+            "flow": [[null, "mock", "BAR"]],
+            "expected": ["ok", "BAR"]
+        },
+        {
+            "title": "Bypass empty flow",
+            "input": ["ok", "FOO"],
+            "flow": [],
+            "expected": ["ok", "FOO"]
         }
     ]
 }
