@@ -27,11 +27,27 @@ module Kotolang
         ]],
         ['array', 'std:call', 'std:arr:get'],
         ['object', 'std:call', 'std:obj:get'],
-        # ['string', 'std:str:get', config],
-        # ['boolean', 'std::get', config],
-        # ['integer', 'std::get', config],
-        # ['float', 'std::get', config],
-        # ['null', 'std::get', config],
+        ['string', 'std:call', 'std:str:get'],
+        [nil, 'std:if', [
+          [
+            [nil, 'std:way:get', nil],
+            ['ok', 'std:str:eq', 'ok']
+          ],
+          [],
+          [
+            [nil, 'std:mock', ['Function is not implemented for input type', 'If is not implemented']],
+            ['ok', 'std:way:set', 'error']
+          ]
+        ]],
+    ],
+    'std:set' => [
+        ['ok', 'std:way:call', [
+          ['ok', 'std:arr:get', 0],
+          ['ok', 'std:type', nil]
+        ]],
+        ['array', 'std:call', 'std:arr:set'],
+        ['object', 'std:call', 'std:obj:set'],
+        ['string', 'std:call', 'std:str:set'],
         [nil, 'std:if', [
           [
             [nil, 'std:way:get', nil],

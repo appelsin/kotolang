@@ -1,0 +1,23 @@
+{
+    "require": ["std:set"],
+    "specs": [
+        {
+            "title": "Gets key in object",
+            "input": ["ok", {"foo": "FOO"}],
+            "flow": [["ok", "std:set", ["bar", "BAR"]]],
+            "expected": ["ok", {"foo": "FOO", "bar": "BAR"}]
+        },
+        {
+            "title": "Gets key in array",
+            "input": ["ok", ["FOO"]],
+            "flow": [["ok", "std:set", [1, "BAR"]]],
+            "expected": ["ok", ["FOO", "BAR"]]
+        },
+        {
+            "title": "Error on wrong type (null)",
+            "input": ["ok", null],
+            "flow": [["ok", "std:set", 1]],
+            "expected": ["error", ["Function is not implemented for input type", "If is not implemented"]]
+        }
+    ]
+}

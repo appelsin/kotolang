@@ -2,16 +2,22 @@
     "require": ["std:get"],
     "specs": [
         {
-            "title": "Gets key in object",
+            "title": "Get key in object",
             "input": ["ok", {"foo": "FOO", "bar": "BAR"}],
             "flow": [["ok", "std:get", "bar"]],
             "expected": ["ok", "BAR"]
         },
         {
-            "title": "Gets key in array",
+            "title": "Get value from array by index",
             "input": ["ok", ["FOO", "BAR"]],
             "flow": [["ok", "std:get", 1]],
             "expected": ["ok", "BAR"]
+        },
+        {
+            "title": "Get char from string by index",
+            "input": ["ok", "BAR"],
+            "flow": [["ok", "std:get", 1]],
+            "expected": ["ok", "A"]
         },
         {
             "title": "Error on wrong type",

@@ -1,0 +1,23 @@
+{
+    "require": ["std:bool:not"],
+    "specs": [
+        // {
+        //     "title": "false -> true",
+        //     "input": ["ok", false],
+        //     "flow": [["ok", "std:bool:not", null]],
+        //     "expected": ["ok", true]
+        // },
+        // {
+        //     "title": "true -> false",
+        //     "input": ["ok", true],
+        //     "flow": [["ok", "std:bool:not", null]],
+        //     "expected": ["ok", false]
+        // },
+        // {
+        //     "title": "Returns error on wrong input (null)",
+        //     "input": ["ok", null],
+        //     "flow": [["ok", "std:bool:not", null]],
+        //     "expected": ["error", null]
+        // }
+    ]
+}
