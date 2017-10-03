@@ -1,0 +1,35 @@
+{
+    "require": ["std:arr:has"],
+    "specs": [
+        {
+            "title": "Checks if index exists in given array",
+            "input": ["ok", ["FOO", "BAR", "BAZ"]],
+            "flow": [["ok", "std:arr:has", 2]],
+            "expected": ["ok", true]
+        },
+        {
+            "title": "Checks if index exists in given array (but element is null)",
+            "input": ["ok", [null, null, null]],
+            "flow": [["ok", "std:arr:has", 0]],
+            "expected": ["ok", true]
+        },
+        {
+            "title": "Return false when out of range",
+            "input": ["ok", ["FOO", "BAR", "BAZ"]],
+            "flow": [["ok", "std:arr:has", 3]],
+            "expected": ["ok", false]
+        },
+        {
+            "title": "Return false when negative",
+            "input": ["ok", ["FOO", "BAR", "BAZ"]],
+            "flow": [["ok", "std:arr:has", -1]],
+            "expected": ["ok", false]
+        },
+        {
+            "title": "Return false on empty array",
+            "input": ["ok", []],
+            "flow": [["ok", "std:arr:has", 0]],
+            "expected": ["ok", false]
+        }
+    ]
+}

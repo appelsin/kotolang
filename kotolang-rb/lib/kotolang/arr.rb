@@ -22,4 +22,18 @@ module Arr
       end
     end
   end
+
+  module Has
+    def self.call(input, config, pipes)
+      if input.is_a?(Array) && config.is_a?(Integer)
+        if config < 0
+          ['ok', false]
+        else
+          ['ok', config < input.size]
+        end
+      else
+        ['error', nil]
+      end
+    end
+  end
 end

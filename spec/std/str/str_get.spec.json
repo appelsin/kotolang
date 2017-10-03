@@ -1,0 +1,35 @@
+{
+    "require": ["std:str:get"],
+    "specs": [
+        {
+            "title": "Gets char from string by index",
+            "input": ["ok", "BAR"],
+            "flow": [["ok", "std:str:get", 1]],
+            "expected": ["ok", "A"]
+        },
+        {
+            "title": "Returns null if index not in string",
+            "input": ["ok", "BAR"],
+            "flow": [["ok", "std:str:get", 5]],
+            "expected": ["ok", null]
+        },
+        {
+            "title": "Returns null if index is negative",
+            "input": ["ok", "BAR"],
+            "flow": [["ok", "std:str:get", -1]],
+            "expected": ["ok", null]
+        },
+        {
+            "title": "Returns error if index is float",
+            "input": ["ok", "BAR"],
+            "flow": [["ok", "std:str:get", 1.0]],
+            "expected": ["error", null]
+        },
+        {
+            "title": "Returns error if input is array",
+            "input": ["ok", []],
+            "flow": [["ok", "std:str:get", 1]],
+            "expected": ["error", null]
+        }
+    ]
+}

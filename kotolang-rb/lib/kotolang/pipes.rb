@@ -8,6 +8,8 @@ module Kotolang
     'std:obj:set' => Obj::Set,
     'std:arr:get' => Arr::Get,
     'std:arr:set' => Arr::Set,
+    'std:arr:has' => Arr::Has,
+    'std:str:get' => Str::Get,
     'std:str:eq' => Str::Eq,
     'std:way:set' => Std::Way::Set,
     'std:way:get' => Std::Way::Get,
