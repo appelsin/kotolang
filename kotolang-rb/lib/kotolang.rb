@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative './kotolang/version'
 require_relative './kotolang/runner'
 require_relative './kotolang/arr'
 require_relative './kotolang/obj'
