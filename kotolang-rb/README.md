@@ -10,4 +10,4 @@ Ruby implementation of Kotolang interpreter.
 
 ## Run tests
 
-`ruby -Ilib:test test/*`
+`ruby -Ilib:test test/test_all.rb`
