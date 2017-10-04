@@ -1,0 +1,59 @@
+{
+    "require": ["json:parse"],
+    "specs": [
+        {
+            "title": "Parse string with object",
+            "input": ["ok", "{\"foo\":\"FOO\",\"bar\":\"BAR\"}"],
+            "flow": [["ok", "json:parse", null]],
+            "expected": ["ok", {"foo":"FOO","bar":"BAR"}]
+        },
+        {
+            "title": "Parse string with array",
+            "input": ["ok", "[\"FOO\",\"BAR\"]"],
+            "flow": [["ok", "json:parse", null]],
+            "expected": ["ok", ["FOO","BAR"]]
+        },
+        {
+            "title": "Parse string with string",
+            "input": ["ok", "\"FOO\""],
+            "flow": [["ok", "json:parse", null]],
+            "expected": ["ok", "FOO"]
+        },
+        {
+            "title": "Parse string with null",
+            "input": ["ok", "null"],
+            "flow": [["ok", "json:parse", null]],
+            "expected": ["ok", null]
+        },
+        {
+            "title": "Parse string with true",
+            "input": ["ok", "true"],
+            "flow": [["ok", "json:parse", null]],
+            "expected": ["ok", true]
+        },
+        {
+            "title": "Parse string with false",
+            "input": ["ok", "false"],
+            "flow": [["ok", "json:parse", null]],
+            "expected": ["ok", false]
+        },
+        {
+            "title": "Parse string with integer",
+            "input": ["ok", "10"],
+            "flow": [["ok", "json:parse", null]],
+            "expected": ["ok", 10]
+        },
+        {
+            "title": "Parse string with float",
+            "input": ["ok", "10.1"],
+            "flow": [["ok", "json:parse", null]],
+            "expected": ["ok", 10.1]
+        },
+        {
+            "title": "Returns error if not parsable",
+            "input": ["ok", "FOO"],
+            "flow": [["ok", "json:parse", null]],
+            "expected": ["error", ["JSON parse error"]]
+        }
+    ]
+}

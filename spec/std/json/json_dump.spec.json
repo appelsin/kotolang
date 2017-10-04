@@ -1,0 +1,53 @@
+{
+    "require": ["json:dump"],
+    "specs": [
+        {
+            "title": "Dump object",
+            "input": ["ok", {"foo":"FOO","bar":"BAR"}],
+            "flow": [["ok", "json:dump", null]],
+            "expected": ["ok", "{\"foo\":\"FOO\",\"bar\":\"BAR\"}"]
+        },
+        {
+            "title": "Dump array",
+            "input": ["ok", ["FOO","BAR"]],
+            "flow": [["ok", "json:dump", null]],
+            "expected": ["ok", "[\"FOO\",\"BAR\"]"]
+        },
+        {
+            "title": "Dump string",
+            "input": ["ok", "FOO"],
+            "flow": [["ok", "json:dump", null]],
+            "expected": ["ok", "\"FOO\""]
+        },
+        {
+            "title": "Dump null",
+            "input": ["ok", null],
+            "flow": [["ok", "json:dump", null]],
+            "expected": ["ok", "null"]
+        },
+        {
+            "title": "Dump true",
+            "input": ["ok", true],
+            "flow": [["ok", "json:dump", null]],
+            "expected": ["ok", "true"]
+        },
+        {
+            "title": "Dump false",
+            "input": ["ok", false],
+            "flow": [["ok", "json:dump", null]],
+            "expected": ["ok", "false"]
+        },
+        {
+            "title": "Dump integer",
+            "input": ["ok", 10],
+            "flow": [["ok", "json:dump", null]],
+            "expected": ["ok", "10"]
+        },
+        {
+            "title": "Dump float",
+            "input": ["ok", 10.1],
+            "flow": [["ok", "json:dump", null]],
+            "expected": ["ok", "10.1"]
+        }
+    ]
+}

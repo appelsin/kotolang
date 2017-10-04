@@ -2,6 +2,8 @@ module Kotolang
   PIPES = {
     'bypass' => Bypass,
     'mock' => Mock,
+    'json:parse' => Json::Parse,
+    'json:dump' => Json::Dump,
     'std:mock' => Mock,
     'std:bypass' => Bypass,
     'std:obj:get' => Obj::Get,
@@ -10,6 +12,7 @@ module Kotolang
     'std:arr:set' => Arr::Set,
     'std:arr:has' => Arr::Has,
     'std:arr:map' => Arr::Map,
+    'std:bool:not' => Bool::Not,
     'std:str:get' => Str::Get,
     'std:str:set' => Str::Set,
     'std:str:eq' => Str::Eq,
