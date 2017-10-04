@@ -1,3 +1,5 @@
+require 'json'
+
 module Kotolang
   class Paw
     def initialize(flow:)
@@ -10,6 +12,14 @@ module Kotolang
       Kotolang::Runner.(['ok', [input, config]], @flow, pipes)
     end
   end
+
+  def self.load(*args)
+    filename = File.join(*[PAW_DIR, *args])
+    data = JSON.parse(File.read(filename))
+    Paw.new(flow: data['flow'])
+  end
+
+  PAW_DIR = File.join(File.dirname(File.dirname(File.dirname(File.dirname(__FILE__)))), 'paws')
 
   PIPES = {
     'tee' => Tee,
@@ -34,46 +44,8 @@ module Kotolang
     'std:if' => Std::If,
     'std:type' => Std::Type,
     'std:call' => Std::Call,
-    'std:get' => Paw.new(flow: [
-        ['ok', 'std:way:call', [
-          ['ok', 'std:arr:get', 0],
-          ['ok', 'std:type', nil]
-        ]],
-        ['array', 'std:call', 'std:arr:get'],
-        ['object', 'std:call', 'std:obj:get'],
-        ['string', 'std:call', 'std:str:get'],
-        [nil, 'std:if', [
-          [
-            [nil, 'std:way:get', nil],
-            ['ok', 'std:str:eq', 'ok']
-          ],
-          [],
-          [
-            [nil, 'std:mock', ['Function is not implemented for input type', 'If is not implemented']],
-            ['ok', 'std:way:set', 'error']
-          ]
-        ]],
-    ]),
-    'std:set' => Paw.new(flow: [
-        ['ok', 'std:way:call', [
-          ['ok', 'std:arr:get', 0],
-          ['ok', 'std:type', nil]
-        ]],
-        ['array', 'std:call', 'std:arr:set'],
-        ['object', 'std:call', 'std:obj:set'],
-        ['string', 'std:call', 'std:str:set'],
-        [nil, 'std:if', [
-          [
-            [nil, 'std:way:get', nil],
-            ['ok', 'std:str:eq', 'ok']
-          ],
-          [],
-          [
-            [nil, 'std:mock', ['Function is not implemented for input type', 'If is not implemented']],
-            ['ok', 'std:way:set', 'error']
-          ]
-        ]],
-    ]),
+    'std:get' => load('std', 'get.paw.json'),
+    'std:set' => load('std', 'set.paw.json'),
     'debug' => -> (input, config, pipes) do
       puts config if config
       puts input

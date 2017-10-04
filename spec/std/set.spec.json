@@ -17,7 +17,7 @@
             "title": "Error on wrong type (null)",
             "input": ["ok", null],
             "flow": [["ok", "std:set", 1]],
-            "expected": ["error", ["Function is not implemented for input type", "If is not implemented"]]
+            "expected": ["error", ["Unexpected input type", "std:set"]]
         }
     ]
 }

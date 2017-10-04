@@ -1,0 +1,23 @@
+{
+  "name": "std:set",
+  "flow": [
+    ["ok", "std:way:call", [
+      ["ok", "std:arr:get", 0],
+      ["ok", "std:type", null]
+    ]],
+    ["array", "std:call", "std:arr:set"],
+    ["object", "std:call", "std:obj:set"],
+    ["string", "std:call", "std:str:set"],
+    [null, "std:if", [
+      [
+        [null, "std:way:get", null],
+        ["ok", "std:str:eq", "ok"]
+      ],
+      [],
+      [
+        [null, "std:mock", ["Unexpected input type", "std:set"]],
+        ["ok", "std:way:set", "error"]
+      ]
+    ]]
+  ]
+}

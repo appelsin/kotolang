@@ -23,7 +23,7 @@
             "title": "Error on wrong type",
             "input": ["ok", null],
             "flow": [["ok", "std:get", 1]],
-            "expected": ["error", ["Function is not implemented for input type", "If is not implemented"]]
+            "expected": ["error", ["Unexpected input type", "std:get"]]
         }
         // {
         //     "title": "Gets nested key in object",
