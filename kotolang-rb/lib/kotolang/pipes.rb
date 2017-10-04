@@ -1,11 +1,22 @@
 module Kotolang
+  class Paw
+    def initialize(flow:)
+      @flow = flow
+    end
+
+    attr_reader :flow
+
+    def call(input, config, pipes)
+      Kotolang::Runner.(['ok', [input, config]], @flow, pipes)
+    end
+  end
+
   PIPES = {
-    'bypass' => Bypass,
+    'tee' => Tee,
     'mock' => Mock,
     'json:parse' => Json::Parse,
     'json:dump' => Json::Dump,
     'std:mock' => Mock,
-    'std:bypass' => Bypass,
     'std:obj:get' => Obj::Get,
     'std:obj:set' => Obj::Set,
     'std:arr:get' => Arr::Get,
@@ -23,7 +34,7 @@ module Kotolang
     'std:if' => Std::If,
     'std:type' => Std::Type,
     'std:call' => Std::Call,
-    'std:get' => [
+    'std:get' => Paw.new(flow: [
         ['ok', 'std:way:call', [
           ['ok', 'std:arr:get', 0],
           ['ok', 'std:type', nil]
@@ -42,8 +53,8 @@ module Kotolang
             ['ok', 'std:way:set', 'error']
           ]
         ]],
-    ],
-    'std:set' => [
+    ]),
+    'std:set' => Paw.new(flow: [
         ['ok', 'std:way:call', [
           ['ok', 'std:arr:get', 0],
           ['ok', 'std:type', nil]
@@ -62,7 +73,7 @@ module Kotolang
             ['ok', 'std:way:set', 'error']
           ]
         ]],
-    ],
+    ]),
     'debug' => -> (input, config, pipes) do
       puts config if config
       puts input

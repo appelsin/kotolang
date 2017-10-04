@@ -14,8 +14,6 @@ module Kotolang
             callable.call_with_way(input_way, input, config, pipes)
           elsif callable.respond_to?(:call)
             callable.(input, config, pipes)
-          elsif callable.is_a?(::Array)
-            call(['ok', [input, config]], callable, pipes)
           elsif callable.nil?
             ['error', ['Function not found', "Unknown function #{pipe}"]]
           else

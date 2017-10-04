@@ -9,7 +9,7 @@ require_relative './kotolang/str'
 require_relative './kotolang/std'
 require_relative './kotolang/json'
 
-module Bypass
+module Tee
   def self.call(input, config, pipes)
     ['ok', input]
   end

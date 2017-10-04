@@ -1,58 +1,58 @@
 {
-    "require": ["bypass"],
+    "require": ["tee"],
     "specs": [
         {
             "title": "Bypass null",
             "input": ["ok", null],
-            "flow": [["ok", "bypass", {}]],
+            "flow": [["ok", "tee", []]],
             "expected": ["ok", null]
         },
         {
             "title": "Bypass false",
             "input": ["ok", false],
-            "flow": [["ok", "bypass", {}]],
+            "flow": [["ok", "tee", []]],
             "expected": ["ok", false]
         },
         {
             "title": "Bypass true",
             "input": ["ok", true],
-            "flow": [["ok", "bypass", {}]],
+            "flow": [["ok", "tee", []]],
             "expected": ["ok", true]
         },
         {
             "title": "Bypass string",
             "input": ["ok", "foo"],
-            "flow": [["ok", "bypass", {}]],
+            "flow": [["ok", "tee", []]],
             "expected": ["ok", "foo"]
         },
         {
             "title": "Bypass int",
             "input": ["ok", 101],
-            "flow": [["ok", "bypass", {}]],
+            "flow": [["ok", "tee", []]],
             "expected": ["ok", 101]
         },
         {
             "title": "Bypass float",
             "input": ["ok", 10.1],
-            "flow": [["ok", "bypass", {}]],
+            "flow": [["ok", "tee", []]],
             "expected": ["ok", 10.1]
         },
         {
             "title": "Bypass empty object",
             "input": ["ok", {}],
-            "flow": [["ok", "bypass", {}]],
+            "flow": [["ok", "tee", []]],
             "expected": ["ok", {}]
         },
         {
             "title": "Bypass empty array",
             "input": ["ok", []],
-            "flow": [["ok", "bypass", {}]],
+            "flow": [["ok", "tee", []]],
             "expected": ["ok", []]
         },
         {
             "title": "Bypass jsonoid",
             "input": ["ok", {"foo": ["bar", 1, 0.1, "baz"]}],
-            "flow": [["ok", "bypass", {}]],
+            "flow": [["ok", "tee", {}]],
             "expected": ["ok", {"foo": ["bar", 1, 0.1, "baz"]}]
         }
     ]
